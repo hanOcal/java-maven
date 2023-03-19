@@ -4,14 +4,16 @@ on:
     workflows: ['Java CI with Maven']                     # runs after CI workflow
     types:
       - completed
+
 jobs:
-  report:
+  build:
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: phoenix-actions/test-reporting@v8
-        id: test-report                     # Set ID reference for step
-        with:
-          artifact: Package           # artifact name
-          name: JEST Tests                  # Name of the check run which will be created
-          path: github-actions-1.0-SNAPSHOT.jar                    # Path to test results (inside artifact .zip)
-          reporter: jest-junit              # Format of test results
+      - name: Checkout Code
+        uses: actions/checkout@v1
+      - name: Build and Run Tests
+        run: mvn test --batch-mode --fail-at-end
+      - name: Publish Test Report
+        if: success() || failure()
+        uses: scacap/action-surefire-report@v1
