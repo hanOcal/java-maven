@@ -31,7 +31,7 @@ jobs:
       run: mvn -B clean --file pom.xml
     - name: Verify with Maven
       run: mvn -B verify --file pom.xml -DskipTest
-    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+    - run: mkdir staging && cp target staging
     - uses: actions/upload-artifact@v1
       with:
         name: Package
