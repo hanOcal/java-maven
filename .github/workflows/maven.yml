@@ -46,11 +46,11 @@ jobs:
         with:
           java-version: 8
       - run: mvn -B package --file pom.xml -DskipTests
-      - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
-      - uses: actions/upload-artifact@v1
+      - run: mkdir staging && cp target/*.jar staging
+      - uses: actions/upload-artifact@v3
         with:
-          name: Package
-          path: staging
+           name: Package
+           path: staging
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
