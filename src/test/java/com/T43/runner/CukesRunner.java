@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
         plugin = {
                 "html:target/cucumber-report.html",
                 "json:target/cucumber.json",
-                "xml:target/report.xml"
         },
         features = "src/test/resources/features",
         glue = "com/T43/stepDefinitions",
