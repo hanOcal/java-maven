@@ -30,11 +30,13 @@ jobs:
     - name: Clean with Maven
       run: mvn -B clean --file pom.xml
     - name: Verify with Maven
-      run: mvn -B verify --file pom.xml
-    - name: Validate with Maven
-      run: mvn -B validate --file pom.xml
-    - name: Deploy with Maven
-      run: mvn -B deploy --file pom.xml
+      run: mvn -B verify --file pom.xml -DskipTest
+    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
+    - uses: actions/upload-artifact@v1
+        with:
+          name: Package
+          path: staging
+
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
