@@ -7,7 +7,7 @@ public class T43StepDefinitions {
 
     @Then("verify it is {string}")
     public void verify_it_is(String expectedResult) {
-        Assert.assertEquals(expectedResult, "github-action");
+        Assert.assertEquals(expectedResult, "github-actions");
     }
 
 }
