@@ -31,8 +31,8 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
+        key: ${{ macOS }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ macOS }}-m2
 
     - name: Build and test project with Maven
       run: mvn -B package --file pom.xml
